@@ -1,5 +1,5 @@
 # angular-fontawesome
-## A simple directive for FontAwesome icons
+A simple directive for FontAwesome icons
 
 TODO:
 * `fa-stack` support
