@@ -1,4 +1,7 @@
-angular-fontawesome
-===================
+# angular-fontawesome
+## A simple directive for FontAwesome icons
 
-An Angular directive for FontAwesome 4
+TODO:
+* `fa-stack` support
+* `fa-reverse` support
+* `pull="left"`, `pull="right"`
