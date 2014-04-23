@@ -4,14 +4,14 @@
   "author": "Paul Marbach <paul@picardylearning.com>",
   "description": "Angular directive for FontAwesome",
   "scripts": {
-    "test": "node ./node_modules/karma/bin/karma start --single-run --no-auto-watch"
+    "test": "node ./node_modules/karma/bin/karma start --single-run"
   },
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-contrib-clean": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-uglify": "*",
-    "grunt-contrib-jasmine": "*",
+    "grunt-contrib-jshint": "*",
     "karma": "^0.12.9",
     "karma-ng-scenario": "^0.1.0",
     "karma-jasmine": "*",
