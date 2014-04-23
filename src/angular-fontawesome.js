@@ -7,10 +7,13 @@ angular.module('picardy.fontawesome', [])
 			scope: {
 				border: '@',
 				flip: '@',
+				fw: '@',
+				inverse: '@',
 				name: '@',
 				rotate: '@',
 				size: '@',
-				spin: '@'
+				spin: '@',
+				stack: '@'
 			},
 			compile: function (tElement, tAttrs, transclude) {
 				return {
@@ -59,8 +62,6 @@ angular.module('picardy.fontawesome', [])
 						if ('spin' in iAttrs && scope.spin !== 'false' && scope.spin !== false) {
 							iElement.addClass('fa-spin');
 						}
-
-						
 					}
 				};
 			}
