@@ -1,10 +1,10 @@
 {
   "name": "angular-fontawesome",
   "version": "0.1.0",
-  "author": "Paul Marbach <paul@picardylearning.com> (http://picardylearning.com/about/)",
+  "author": "Paul Marbach <paul@picardylearning.com>",
   "description": "Angular directive for FontAwesome",
   "scripts": {
-    "test": ""
+    "test": "node ./node_modules/karma/bin/karma start --single-run --no-auto-watch"
   },
   "devDependencies": {
     "grunt": "^0.4.4",
@@ -17,6 +17,7 @@
     "karma-jasmine": "*",
     "karma-chrome-launcher": "*",
   	"karma-firefox-launcher": "*",
+    "karma-phantomjs-launcher": "*",
   	"karma-safari-launcher": "*",
     "grunt-karma": "^0.8.2",
     "karma-ng-html2js-preprocessor": "^0.1.0"
@@ -24,6 +25,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:picardy/angular-fontawesome.git"
-  }
+    "url": "https://github.com/picardy/angular-fontawesome.git"
+  },
+  "keywords": [
+    "angular",
+    "fontawesome",
+    "directive"
+  ]
 }

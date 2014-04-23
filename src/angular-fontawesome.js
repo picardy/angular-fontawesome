@@ -4,66 +4,70 @@ angular.module('picardy.fontawesome', [])
 			restrict: 'E',
 			template: '<i class="fa"></i>',
 			replace: true,
-			scope: {
-				border: '@',
-				flip: '@',
-				fw: '@',
-				inverse: '@',
-				name: '@',
-				rotate: '@',
-				size: '@',
-				spin: '@',
-				stack: '@'
-			},
-			compile: function (tElement, tAttrs, transclude) {
-				return {
-					pre: function preLink (scope, iElement, iAttrs, controller) {
-						/* Defined attrs */
-						if (!!scope.name) {
-							iElement.addClass('fa-' + scope.name);
-						}
+			link: function (scope, element, attrs) {
+				
+				/*** STRING ATTRS ***/
+				// keep a state of the current attrs so that when they change,
+				// we can remove the old attrs before adding the new ones.
+				var currentClasses = {};
 
-						if (!!scope.rotate && !isNan(parseInt(scope.rotate, 10))) {
-							iElement.addClass('fa-rotate-' + scope.rotate);
-						}
+				// generic function to bind string attrs
+				function _observeStringAttr (attr, baseClass) {
+					attrs.$observe(attr, function () {
+						baseClass = baseClass || 'fa-' + attr;
+						var className = [baseClass, attrs[attr]].join('-');
+						element.removeClass(currentClasses[attr]);
+						element.addClass(className);
+						currentClasses[attr] = className;
+					});
+				}
 
-						if (!!scope.flip && scope.rotate === 'horizontal' || scope.rotate === 'vertical') {
-							iElement.addClass('fa-flip-' + scope.rotate);
-						}
+				_observeStringAttr('name', 'fa');
+				_observeStringAttr('rotate');
+				_observeStringAttr('flip');
 
-						if (!!scope.size) {
-							if (scope.size === 'large') {
-								iElement.addClass('fa-lg');
-							} else if (!isNan(parseInt(scope.size, 10))) {
-								iElement.addClass('fa-' + scope.size + 'x');
-							}
-						}
+				/**
+				 * size can be passed "large" or an integer
+				 */
+				attrs.$observe('size', function () {
+					var className;
+					element.removeClass(currentClasses.size);
 
-						/* Boolean attrs */
-						if ('border' in iAttrs && scope.border !== 'false' && scope.border !== false) {
-							iElement.addClass('fa-border');
-						}
-
-						if ('fw' in iAttrs && scope.fw !== 'false' && scope.fw !== false) {
-							iElement.addClass('fa-fx');
-						}
-
-						if ('inverse' in iAttrs && scope.inverse !== 'false' && scope.inverse !== false) {
-							iElement.addClass('fa-inverse');
-						}
-
-						if ('list' in iAttrs || (iElement.parent() &&
-								iElement.parent().parent() &&
-								iElement.parent().parent().hasClass('fa-ul') &&
-								iElement.parent().children()[0] === iElement[0])) {
-							iElement.addClass('fa-li');
-						}
-
-						if ('spin' in iAttrs && scope.spin !== 'false' && scope.spin !== false) {
-							iElement.addClass('fa-spin');
-						}
+					if (attrs.size === 'large') {
+						className = 'fa-lg';
+					} else if (!isNaN(parseInt(attrs.size, 10))) {
+						className = 'fa-' + attrs.size + 'x';
 					}
-				};
+
+					element.addClass(className);
+					currentClasses.size = className;
+				});
+
+				/*** BOOLEAN ATTRS ***/
+				// generic function to bind boolean attrs
+				function _observeBooleanAttr (attr, className) {
+					attrs.$observe(attr, function () {
+						className = className || 'fa-' + attr;
+						var value = attr in attrs && attrs[attr] !== 'false' && attrs[attr] !== false;
+						element.toggleClass(className, value);
+					});
+				}
+
+				_observeBooleanAttr('border');
+				_observeBooleanAttr('fw');
+				_observeBooleanAttr('inverse');
+				_observeBooleanAttr('lg');
+				_observeBooleanAttr('list', 'fa-li');
+				_observeBooleanAttr('spin');
+
+				/*** CONDITIONAL ATTRS ***/
+				// automatically populate fa-li if DOM structure indicates
+				if (element.parent() &&
+						element.parent().parent() &&
+						element.parent().parent().hasClass('fa-ul') &&
+						element.parent().children()[0] === element[0]) {
+					element.addClass('fa-li');
+				}
 			}
 		};
 	});

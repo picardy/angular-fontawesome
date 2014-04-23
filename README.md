@@ -44,7 +44,7 @@ The icon's [name](http://fontawesome.io/icons/), such as `fa-loading` or `fa-squ
 ##### size
 The icon's font size, either defined by a multiplier (1-5), or by the string `"large"`.
 ```html
-<fa name="square" size="<% currentSize %>"></fa>
+<fa name="square" size="{{ currentSize }}"></fa>
 <!-- $scope.currentSize = 3 -->
 <!-- rendered -->
 <i class="fa fa-square fa-3x"></i>
@@ -75,7 +75,7 @@ Animate the icon to spin. You don't need to provide true to use the boolean attr
 ```
 You can pass in `true` or `false` to the attribute as well, allowing the spin class to be be easily toggleable.
 ```html
-<fa name="<% isLoading ? 'loading' : 'check' %>" spin="<% isLoading %>"></fa>
+<fa name="{{ isLoading ? 'loading' : 'check' }}" spin="{{ isLoading }}"></fa>
 <!-- rendered -->
 <i class="fa fa-loading fa-spin"></i>
 ```

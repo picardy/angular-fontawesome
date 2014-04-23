@@ -4,6 +4,8 @@
 	"devDependencies": {
 		"angular": "~1.2",
 		"angular-mocks": "~1.2",
-		"font-awesome": "~4"
+		"font-awesome": "~4",
+		"jasmine-jquery": "~1.7",
+		"jquery": "~2"
 	}
 }
