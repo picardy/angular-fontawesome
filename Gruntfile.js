@@ -3,13 +3,13 @@ module.exports = function (grunt) {
 		copy: {
 			dist: {
 				src: 'src/angular-fontawesome.js',
-				dest: 'dist/'
+				dest: 'dist/angular-fontawesome.js'
 			}
 		},
 		uglify: {
 			dist: {
 				files: {
-					'dist/angular-fontawesome.min.js': ['dist/angular-fontawesome']
+					'dist/angular-fontawesome.min.js': [ 'dist/angular-fontawesome.js' ]
 				}
 			}
 		},

@@ -20,5 +20,10 @@
   	"karma-safari-launcher": "*",
     "grunt-karma": "^0.8.2",
     "karma-ng-html2js-preprocessor": "^0.1.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:picardy/angular-fontawesome.git"
   }
 }
