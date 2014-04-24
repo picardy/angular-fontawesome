@@ -72,7 +72,7 @@ describe('angular-fontawesome', function () {
         expect(elm.hasClass('fa-1x')).toBe(true);
       });
 
-      it('should clear existing strings', function () {
+      it('should clear existing classes', function () {
         scope.options.size = 'large';
         scope.$digest();
         
@@ -97,17 +97,212 @@ describe('angular-fontawesome', function () {
     });
 
     describe('flip', function () {
+      beforeEach(inject(function($rootScope, $compile) {
+        elm = angular.element('<fa name="book" flip="{{ options.flip }}"></fa>');
+        scope = $rootScope;
 
+        $rootScope.options = $rootScope.options || {};
+
+        $compile(elm)(scope);
+        scope.$digest();
+      }));
+
+      it('should handle any string #futureproofing', function () {
+        scope.options.flip = 'horizontal';
+        scope.$digest();
+        expect(elm.hasClass('fa-flip-horizontal')).toBe(true);
+
+        scope.options.flip = 'vertical';
+        scope.$digest();
+        expect(elm.hasClass('fa-flip-vertical')).toBe(true);
+
+        scope.options.flip = 'foobar';
+        scope.$digest();
+        expect(elm.hasClass('fa-flip-foobar')).toBe(true);
+      });
+
+      it('should clear existing classes', function () {
+        scope.options.flip = 'horizontal';
+        scope.$digest();
+        expect(elm.hasClass('fa-flip-horizontal')).toBe(true);
+
+        scope.options.flip = 'vertical';
+        scope.$digest();
+        expect(elm.hasClass('fa-flip-vertical')).toBe(true);
+        expect(elm.hasClass('fa-flip-horizontal')).not.toBe(true);
+      });
     });
 
     describe('rotate', function () {
+      beforeEach(inject(function($rootScope, $compile) {
+        elm = angular.element('<fa name="shield" rotate="{{ options.rotate }}"></fa>');
+        scope = $rootScope;
 
+        $rootScope.options = $rootScope.options || {};
+
+        $compile(elm)(scope);
+        scope.$digest();
+      }));
+
+      it('should handle any int #futureproofing', function () {
+        scope.options.rotate = 90;
+        scope.$digest();
+        expect(elm.hasClass('fa-rotate-90')).toBe(true);
+
+        scope.options.rotate = 180;
+        scope.$digest();
+        expect(elm.hasClass('fa-rotate-180')).toBe(true);
+
+        scope.options.rotate = 270;
+        scope.$digest();
+        expect(elm.hasClass('fa-rotate-270')).toBe(true);
+      });
+
+      it('should handle any string #futureproofing', function () {
+        scope.options.rotate = '90';
+        scope.$digest();
+        expect(elm.hasClass('fa-rotate-90')).toBe(true);
+
+        scope.options.rotate = '180';
+        scope.$digest();
+        expect(elm.hasClass('fa-rotate-180')).toBe(true);
+
+        scope.options.rotate = '270';
+        scope.$digest();
+        expect(elm.hasClass('fa-rotate-270')).toBe(true);
+      });
+
+      it('should clear existing classes', function () {
+        scope.options.rotate = 90;
+        scope.$digest();
+        expect(elm.hasClass('fa-rotate-90')).toBe(true);
+
+        scope.options.rotate = 180;
+        scope.$digest();
+        expect(elm.hasClass('fa-rotate-180')).toBe(true);
+        expect(elm.hasClass('fa-rotate-90')).not.toBe(true);
+      });
     });
   });
 
   describe('boolean attributes', function () {
-    describe('spin', function () {});
-    describe('border', function () {});
+    describe('spin', function () {
+      it('should set the class if the attr is present with no value', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="loading" spin></fa>');
+          scope = $rootScope;
+
+          $rootScope.options = $rootScope.options || {};
+
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          expect(elm.hasClass('fa-spin')).toBe(true);
+        });
+      });
+
+      it('should be set to false if it\'s declared', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="loading" spin="false"></fa>');
+          scope = $rootScope;
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          expect(elm.hasClass('fa-spin')).toBe(false);
+        });
+      });
+
+      it('should bind to an expression', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="loading" spin="{{ options.loading }}"></fa>');
+          scope = $rootScope;
+
+          $rootScope.options = $rootScope.options || {};
+
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          scope.options.loading = true;
+          scope.$digest();
+          expect(elm.hasClass('fa-spin')).toBe(true);
+
+          scope.options.loading = false;
+          scope.$digest();
+          expect(elm.hasClass('fa-spin')).toBe(false);
+        });
+      });
+    });
+
+    describe('border', function () {
+      it('should set the class if the attr is present with no value', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="loading" border></fa>');
+          scope = $rootScope;
+
+          $rootScope.options = $rootScope.options || {};
+
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          expect(elm.hasClass('fa-border')).toBe(true);
+        });
+      });
+
+      it('should be set to false if it\'s declared', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="loading" border="false"></fa>');
+          scope = $rootScope;
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          expect(elm.hasClass('fa-border')).toBe(false);
+        });
+      });
+
+      it('should bind to an expression', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="loading" border="{{ options.border }}"></fa>');
+          scope = $rootScope;
+
+          $rootScope.options = $rootScope.options || {};
+
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          scope.options.border = true;
+          scope.$digest();
+          expect(elm.hasClass('fa-border')).toBe(true);
+
+          scope.options.border = false;
+          scope.$digest();
+          expect(elm.hasClass('fa-border')).toBe(false);
+        });
+      });
+    });
     describe('fw', function () {});
     describe('inverse', function () {});
   });
