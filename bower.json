@@ -10,6 +10,7 @@
     ".jshintrc",
     "test",
     "src",
-    "karma*.js"
+    "karma*.js",
+    "package.json"
   ]
 }
