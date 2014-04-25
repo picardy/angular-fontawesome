@@ -1,4 +1,5 @@
-# angular-fontawesome
+# angular-fontawesome [![Build Status](https://travis-ci.org/picardy/angular-fontawesome.svg?branch=master)](https://travis-ci.org/picardy/angular-fontawesome)
+
 A simple directive for [FontAwesome](http://fontawesome.io/) icons. Avoid writing a massive `ngStyle` declaration for your FontAwesome integration, and easily integrate 
 
 ### Usage
