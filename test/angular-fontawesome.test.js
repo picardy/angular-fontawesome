@@ -72,6 +72,13 @@ describe('angular-fontawesome', function () {
         expect(elm.hasClass('fa-1x')).toBe(true);
       });
 
+      it('should reject non-conforming input', function () {
+        scope.options.size = 'a';
+        scope.$digest();
+
+        expect(elm.hasClass('fa-ax')).not.toBe(true);
+      });
+
       it('should clear existing classes', function () {
         scope.options.size = 'large';
         scope.$digest();
@@ -134,12 +141,13 @@ describe('angular-fontawesome', function () {
     });
 
     describe('rotate', function () {
+      var elm, scope;
+
       beforeEach(inject(function($rootScope, $compile) {
         elm = angular.element('<fa name="shield" rotate="{{ options.rotate }}"></fa>');
         scope = $rootScope;
 
         $rootScope.options = $rootScope.options || {};
-
         $compile(elm)(scope);
         scope.$digest();
       }));
