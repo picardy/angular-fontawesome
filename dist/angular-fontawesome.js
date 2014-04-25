@@ -15,10 +15,12 @@ angular.module('picardy.fontawesome', [])
 				function _observeStringAttr (attr, baseClass) {
 					attrs.$observe(attr, function () {
 						baseClass = baseClass || 'fa-' + attr;
-						var className = [baseClass, attrs[attr]].join('-');
 						element.removeClass(currentClasses[attr]);
-						element.addClass(className);
-						currentClasses[attr] = className;
+						if (attrs[attr]) {
+							var className = [baseClass, attrs[attr]].join('-');
+							element.addClass(className);
+							currentClasses[attr] = className;
+						}
 					});
 				}
 
@@ -57,17 +59,18 @@ angular.module('picardy.fontawesome', [])
 				_observeBooleanAttr('fw');
 				_observeBooleanAttr('inverse');
 				_observeBooleanAttr('lg');
-				_observeBooleanAttr('list', 'fa-li');
 				_observeBooleanAttr('spin');
 
 				/*** CONDITIONAL ATTRS ***/
 				// automatically populate fa-li if DOM structure indicates
-				if (element.parent() &&
-						element.parent().parent() &&
-						element.parent().parent().hasClass('fa-ul') &&
-						element.parent().children()[0] === element[0]) {
-					element.addClass('fa-li');
-				}
+				element.toggleClass('fa-li', (
+					element.parent() &&
+					element.parent().parent() &&
+					element.parent().parent().hasClass('fa-ul') &&
+					element.parent().children()[0] === element[0]) &&
+					attrs.list !== 'false' &&
+					attrs.list !== false
+				);
 			}
 		};
 	});
