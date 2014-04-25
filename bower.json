@@ -11,6 +11,7 @@
     "test",
     "src",
     "karma*.js",
-    "package.json"
+    "package.json",
+    "Gruntfile.js"
   ]
 }

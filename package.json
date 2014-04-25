@@ -4,9 +4,10 @@
   "author": "Paul Marbach <paul@picardylearning.com>",
   "description": "Angular directive for FontAwesome",
   "scripts": {
-    "test": "node ./node_modules/karma/bin/karma start --single-run --no-autowatch"
+    "test": "./node_modules/bower/bin/bower install; ./node_modules/karma/bin/karma start --browsers Firefox --single-run"
   },
   "devDependencies": {
+    "bower": "*",
     "grunt": "^0.4.4",
     "grunt-contrib-clean": "*",
     "grunt-contrib-copy": "*",

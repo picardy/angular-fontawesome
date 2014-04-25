@@ -311,8 +311,183 @@ describe('angular-fontawesome', function () {
         });
       });
     });
-    describe('fw', function () {});
-    describe('inverse', function () {});
+
+    describe('fw', function () {
+      it('should set the class if the attr is present with no value', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="square" fw></fa>');
+          scope = $rootScope;
+
+          $rootScope.options = $rootScope.options || {};
+
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          expect(elm.hasClass('fa-fw')).toBe(true);
+        });
+      });
+
+      it('should be set to false if it\'s declared', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="square" fw="false"></fa>');
+          scope = $rootScope;
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          expect(elm.hasClass('fa-fw')).toBe(false);
+        });
+      });
+
+      it('should bind to an expression', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="square" fw="{{ options.fw }}"></fa>');
+          scope = $rootScope;
+
+          $rootScope.options = $rootScope.options || {};
+
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          scope.options.fw = true;
+          scope.$digest();
+          expect(elm.hasClass('fa-fw')).toBe(true);
+
+          scope.options.fw = false;
+          scope.$digest();
+          expect(elm.hasClass('fa-fw')).toBe(false);
+        });
+      });
+    });
+
+    describe('inverse', function () {
+      it('should set the class if the attr is present with no value', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="github" inverse></fa>');
+          scope = $rootScope;
+
+          $rootScope.options = $rootScope.options || {};
+
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          expect(elm.hasClass('fa-inverse')).toBe(true);
+        });
+      });
+
+      it('should be set to false if it\'s declared', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="github" inverse="false"></fa>');
+          scope = $rootScope;
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          expect(elm.hasClass('fa-inverse')).toBe(false);
+        });
+      });
+
+      it('should bind to an expression', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="github" inverse="{{ options.inverse }}"></fa>');
+          scope = $rootScope;
+
+          $rootScope.options = $rootScope.options || {};
+
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          scope.options.inverse = true;
+          scope.$digest();
+          expect(elm.hasClass('fa-inverse')).toBe(true);
+
+          scope.options.inverse = false;
+          scope.$digest();
+          expect(elm.hasClass('fa-inverse')).toBe(false);
+        });
+      });
+    });
+
+    describe('lg', function () {
+      it('should set the class if the attr is present with no value', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="github" lg></fa>');
+          scope = $rootScope;
+
+          $rootScope.options = $rootScope.options || {};
+
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          expect(elm.hasClass('fa-lg')).toBe(true);
+        });
+      });
+
+      it('should be set to false if it\'s declared', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="github" lg="false"></fa>');
+          scope = $rootScope;
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          expect(elm.hasClass('fa-lg')).toBe(false);
+        });
+      });
+
+      it('should bind to an expression', function () {
+        var elm, scope;
+
+        inject(function($rootScope, $compile) {
+          elm = angular.element('<fa name="github" lg="{{ options.lg }}"></fa>');
+          scope = $rootScope;
+
+          $rootScope.options = $rootScope.options || {};
+
+          $compile(elm)(scope);
+          scope.$digest();
+        });
+
+        runs(function () {
+          scope.options.lg = true;
+          scope.$digest();
+          expect(elm.hasClass('fa-lg')).toBe(true);
+
+          scope.options.lg = false;
+          scope.$digest();
+          expect(elm.hasClass('fa-lg')).toBe(false);
+        });
+      });
+    });
   });
 
   describe('conditional attributes', function () {
