@@ -1,6 +1,6 @@
 # angular-fontawesome [![Build Status](https://travis-ci.org/picardy/angular-fontawesome.svg?branch=master)](https://travis-ci.org/picardy/angular-fontawesome)
 
-A simple directive for [FontAwesome](http://fontawesome.io/) icons. Avoid writing a massive `ngStyle` declaration for your FontAwesome integration, and easily integrate 
+A simple directive for [FontAwesome](http://fontawesome.io/) icons. Avoid writing a massive `ngStyle` declaration for your FontAwesome integration, and use the power of Angular to make interactive icon-based widgets.
 
 ### Usage
 
@@ -128,8 +128,10 @@ coming soon
 
 
 ### TODO
-* `fa-stack` support
-* `pull="left"`, `pull="right"`
+ * `fa-stack` support
+ * `pull="left"`, `pull="right"`
+ * demos on Github pages
+
 
 ### License
 MIT Licensed by [Picardy](http://beta.picardylearning.com).
