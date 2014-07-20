@@ -7,9 +7,9 @@
     "angular-mocks": "~1.2",
     "font-awesome": "~4"
   },
-  "main": {
+  "main": [
     "dist/angular-fontawesome.js"
-  },
+  ],
   "ignore": [
     ".jshintrc",
     "test",
