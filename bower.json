@@ -1,15 +1,17 @@
 {
   "name": "angular-fontawesome",
   "description": "Angular directive for FontAwesome",
-  "version": "0.1.0",
-  "devDependencies": {
-    "angular": "~1.2",
-    "angular-mocks": "~1.2",
-    "font-awesome": "~4"
-  },
+  "version": "0.1.2",
   "main": [
     "dist/angular-fontawesome.js"
   ],
+  "dependencies": {
+    "angular": "~1.2",
+    "font-awesome": "~4"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2"
+  },
   "ignore": [
     ".jshintrc",
     "test",
