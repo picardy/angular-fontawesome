@@ -58,7 +58,6 @@ angular.module('picardy.fontawesome', [])
 				_observeBooleanAttr('border');
 				_observeBooleanAttr('fw');
 				_observeBooleanAttr('inverse');
-				_observeBooleanAttr('lg');
 				_observeBooleanAttr('spin');
 
 				/*** CONDITIONAL ATTRS ***/
