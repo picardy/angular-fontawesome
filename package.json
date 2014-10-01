@@ -1,6 +1,6 @@
 {
   "name": "angular-fontawesome",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Paul Marbach <paul@picardylearning.com>",
   "description": "Angular directive for FontAwesome",
   "scripts": {
@@ -14,6 +14,7 @@
     "grunt-contrib-uglify": "*",
     "grunt-contrib-jshint": "*",
     "grunt-karma": "^0.8.2",
+    "grunt-bump": "~0.0.15",
     "karma": "^0.12.9",
     "karma-ng-scenario": "^0.1.0",
     "karma-jasmine": "*",

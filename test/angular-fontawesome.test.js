@@ -429,65 +429,6 @@ describe('angular-fontawesome', function () {
         });
       });
     });
-
-    describe('lg', function () {
-      it('should set the class if the attr is present with no value', function () {
-        var elm, scope;
-
-        inject(function($rootScope, $compile) {
-          elm = angular.element('<fa name="github" lg></fa>');
-          scope = $rootScope;
-
-          $rootScope.options = $rootScope.options || {};
-
-          $compile(elm)(scope);
-          scope.$digest();
-        });
-
-        runs(function () {
-          expect(elm.hasClass('fa-lg')).toBe(true);
-        });
-      });
-
-      it('should be set to false if it\'s declared', function () {
-        var elm, scope;
-
-        inject(function($rootScope, $compile) {
-          elm = angular.element('<fa name="github" lg="false"></fa>');
-          scope = $rootScope;
-          $compile(elm)(scope);
-          scope.$digest();
-        });
-
-        runs(function () {
-          expect(elm.hasClass('fa-lg')).toBe(false);
-        });
-      });
-
-      it('should bind to an expression', function () {
-        var elm, scope;
-
-        inject(function($rootScope, $compile) {
-          elm = angular.element('<fa name="github" lg="{{ options.lg }}"></fa>');
-          scope = $rootScope;
-
-          $rootScope.options = $rootScope.options || {};
-
-          $compile(elm)(scope);
-          scope.$digest();
-        });
-
-        runs(function () {
-          scope.options.lg = true;
-          scope.$digest();
-          expect(elm.hasClass('fa-lg')).toBe(true);
-
-          scope.options.lg = false;
-          scope.$digest();
-          expect(elm.hasClass('fa-lg')).toBe(false);
-        });
-      });
-    });
   });
 
   describe('conditional attributes', function () {
