@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "author": "Paul Marbach <paul@picardylearning.com>",
   "description": "Angular directive for FontAwesome",
+  "main": "dist/angular-fontawesome",
   "scripts": {
     "test": "./node_modules/bower/bin/bower install; ./node_modules/karma/bin/karma start --browsers Firefox --single-run"
   },
