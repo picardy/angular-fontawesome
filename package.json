@@ -1,12 +1,24 @@
 {
   "name": "angular-fontawesome",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "author": "Paul Marbach <paul@picardylearning.com>",
   "description": "Angular directive for FontAwesome",
-  "main": "dist/angular-fontawesome",
   "scripts": {
     "test": "./node_modules/bower/bin/bower install; ./node_modules/karma/bin/karma start --browsers Firefox --single-run"
   },
+  "main": "dist/angular-fontawesome.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/picardy/angular-fontawesome.git"
+  },
+  "bugs": {
+    "url": "https://github.com/picardy/angular-fontawesome/issues"
+  },
+  "keywords": [
+    "angular",
+    "fontawesome",
+    "directive"
+  ],
   "devDependencies": {
     "bower": "*",
     "grunt": "^0.4.4",
@@ -20,19 +32,10 @@
     "karma-ng-scenario": "^0.1.0",
     "karma-jasmine": "*",
     "karma-chrome-launcher": "*",
-  	"karma-firefox-launcher": "*",
+    "karma-firefox-launcher": "*",
     "karma-phantomjs-launcher": "*",
-  	"karma-safari-launcher": "*",
+    "karma-safari-launcher": "*",
     "karma-ng-html2js-preprocessor": "^0.1.0"
   },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/picardy/angular-fontawesome.git"
-  },
-  "keywords": [
-    "angular",
-    "fontawesome",
-    "directive"
-  ]
+  "license": "MIT"
 }
