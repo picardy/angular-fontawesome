@@ -1,5 +1,7 @@
 # angular-fontawesome [![Build Status](https://travis-ci.org/picardy/angular-fontawesome.svg?branch=master)](https://travis-ci.org/picardy/angular-fontawesome)
 
+[![Join the chat at https://gitter.im/picardy/angular-fontawesome](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/picardy/angular-fontawesome?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A simple directive for [FontAwesome](http://fontawesome.io/) icons. Avoid writing a massive `ngStyle` declaration for your FontAwesome integration, and use the power of Angular to make interactive icon-based widgets.
 
 ### Usage
