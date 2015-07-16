@@ -15,10 +15,10 @@ A simple directive for [FontAwesome](http://fontawesome.io/) icons. Avoid writin
     
 3. Use the directive on any page which bootstraps your app.
     ```html
-    <fa name="loading" spin ng-style="{'color': checkColor}"></fa>
+    <fa name="spinner" spin ng-style="{'color': checkColor}"></fa>
     <!-- $scope.checkColor = 'blue' -->
     <!-- rendered -->
-    <i class="fa fa-loading fa-spin" style="color:blue;"></i>
+    <i class="fa fa-spinner fa-spin" style="color:blue;"></i>
     ```
 
 ### Attributes
@@ -37,7 +37,7 @@ The `fa` directive's attributes map to the [classes used by FontAwesome\.
 ```
 
 ##### name
-The icon's [name](http://fontawesome.io/icons/), such as `fa-loading` or `fa-square`.
+The icon's [name](http://fontawesome.io/icons/), such as `fa-spinner` or `fa-square`.
 ```html
 <fa name="github"></fa>
 <!-- rendered -->
@@ -72,15 +72,15 @@ Rotate the icon `90`, `180`, or `270` degrees.
 ##### spin
 Animate the icon to spin. You don't need to provide true to use the boolean attributes:
 ```html
-<fa name="loading" spin></fa>
+<fa name="spinner" spin></fa>
 <!-- rendered -->
-<i class="fa fa-loading fa-spin"></i>
+<i class="fa fa-spinner fa-spin"></i>
 ```
 You can pass in `true` or `false` to the attribute as well, allowing the spin class to be be easily toggleable.
 ```html
-<fa name="{{ isLoading ? 'loading' : 'check' }}" spin="{{ isLoading }}"></fa>
+<fa name="{{ isLoading ? 'spinner' : 'check' }}" spin="{{ isLoading }}"></fa>
 <!-- rendered -->
-<i class="fa fa-loading fa-spin"></i>
+<i class="fa fa-spinner fa-spin"></i>
 ```
 
 ##### border
