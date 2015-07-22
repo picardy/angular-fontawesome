@@ -23,7 +23,7 @@ A simple directive for [FontAwesome](http://fontawesome.io/) icons. Avoid writin
 
 ### Attributes
 
-The `fa` directive's attributes map to the [classes used by FontAwesome\.
+The `fa` directive's attributes map to the classes used by FontAwesome\.
 
 ```html
 <fa name="ICON-NAME"
@@ -126,11 +126,20 @@ This directive autodetects if you're setup to do `fa-li` and then takes care of 
 ```
 
 ##### stack
-coming soon
+The `faStack` directive is used as a wrapper for stacked fonts used by FontAwesome\.
 
+```html
+<fa-stack size="1-5|large">
+    <fa name="ICON_NAME" stack="1-5|large"></fa>
+    <fa name="ICON_NAME" stack="1-5|large"></fa>    
+</fa-stack>
+```
+When using <fa-stack> as a wrapper, you must also specify the 'stack' attribute on the children, 
+as described [here](http://fortawesome.github.io/Font-Awesome/examples/#stacked).
+Failure to do so will render the fonts, just not one on top of another like we want them to.
 
 ### TODO
- * `fa-stack` support
+ * `fa-stack` tests
  * `pull="left"`, `pull="right"`
  * demos on Github pages
 
