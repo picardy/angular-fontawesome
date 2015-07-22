@@ -1,6 +1,6 @@
 {
   "name": "angular-fontawesome",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "author": "Paul Marbach <paul@picardylearning.com>",
   "description": "Angular directive for FontAwesome",
   "scripts": {
