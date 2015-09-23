@@ -53,7 +53,7 @@ For accessibility support, you can now add an *alt* attribute, which will implem
 <span aria-hidden="true">
       <i class="fa fa-github"></i>
 </span>
-<span class="sr-only">Bed</span>
+<span class="sr-only">github website</span>
 ```
 
 **notice:** the ['sr-only' class](http://getbootstrap.com/css/#helper-classes-screen-readers) is derived from [Bootstrap](http://getbootstrap.com/). If you're not using Bootstrap, you must add this style to you css:
