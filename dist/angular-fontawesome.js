@@ -88,6 +88,16 @@ angular.module('picardy.fontawesome', [])
 					attrs.list !== 'false' &&
 					attrs.list !== false
 				);
+
+				attrs.$observe('alt', function () {
+					if (attrs.alt) {
+						var srText;
+						srText = attrs.alt;
+						element.removeAttr('alt');
+						element.wrap('<span aria-hidden="true"></span>').parent().after('<span class="sr-only">' + srText + '</span>');
+					}
+				});
+
 			}
 		};
 	})
