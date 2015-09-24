@@ -251,6 +251,25 @@
           var elm, scope;
 
           inject(function($rootScope, $compile) {
+            elm = angular.element('<fa name="github" alt="{{ options.alt }}"></fa>');
+            elm.after('<span>my non-sr label</span>');
+            scope = $rootScope;
+
+            scope.options = {alt: 'old text'};
+
+            $compile(elm)(scope);
+            scope.$digest();
+            expect(elm.next().text()).toBe('old text');
+            expect(elm.next().next().text()).toBe('my non-sr label');
+
+            done();
+          });
+        });
+
+        it('should not mess with an existing sibling', function(done) {
+          var elm, scope;
+
+          inject(function($rootScope, $compile) {
             elm = angular.element('<fa name="github" alt=""></fa>');
             scope = $rootScope;
 

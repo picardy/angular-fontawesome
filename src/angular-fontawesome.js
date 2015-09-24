@@ -98,7 +98,7 @@ angular.module('picardy.fontawesome', [])
 						element.removeAttr('alt');
 
 						// create the alt elem if one does not exist
-						if (!altElem || !altElem.hasClass('')) {
+						if (!altElem || !altElem.hasClass(altElemClass)) {
 							element.after('<span class="sr-only fa-alt-text"></span>');
 							altElem = element.next();
 						}
