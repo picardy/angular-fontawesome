@@ -28,7 +28,7 @@ module.exports = function (grunt) {
         options: {
           port: 8005,
           hostname: '*',
-					open: 'http://localhost:8005/demo'
+          open: 'http://localhost:8005/demo'
         }
       }
     },
@@ -60,6 +60,14 @@ module.exports = function (grunt) {
     },
     eslint: {
       main: ['Gruntfile.js', 'test/**/*.js', 'src/**/*.js']
+    },
+    'gh-pages': {
+      demo: {
+        options: {
+          base: '.'
+        },
+        src: ['src/**/*', 'dist/**/*', 'demo/**/*']
+      }
     }
   });
 
@@ -69,10 +77,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-eslint');
+  grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-karma');
 
   grunt.registerTask('build', ['clean:dist', 'copy:dist', 'uglify:dist']);
   grunt.registerTask('test-suite', ['eslint', 'karma:all']);
   grunt.registerTask('test', ['eslint', 'karma:phantomjs']);
-  grunt.registerTask('release', ['test-suite', 'build', 'bump']);
+  grunt.registerTask('release', ['test-suite', 'build', 'bump', 'gh-pages']);
 };

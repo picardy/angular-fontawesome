@@ -28,6 +28,7 @@
     "grunt-contrib-copy": "0.8.0",
     "grunt-contrib-uglify": "0.8.0",
     "grunt-eslint": "^17.2.0",
+    "grunt-gh-pages": "^0.10.0",
     "grunt-karma": "^0.8.2",
     "karma": "^0.12.9",
     "karma-chrome-launcher": "0.1.7",
