@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('picardy.fontawesome', [])
 	.directive('fa', function () {
 		return {
@@ -13,11 +15,13 @@ angular.module('picardy.fontawesome', [])
 
 				// generic function to bind string attrs
 				function _observeStringAttr (attr, baseClass) {
+					var className;
+
 					attrs.$observe(attr, function () {
 						baseClass = baseClass || 'fa-' + attr;
 						element.removeClass(currentClasses[attr]);
 						if (attrs[attr]) {
-							var className = [baseClass, attrs[attr]].join('-');
+							className = [baseClass, attrs[attr]].join('-');
 							element.addClass(className);
 							currentClasses[attr] = className;
 						}
@@ -66,9 +70,11 @@ angular.module('picardy.fontawesome', [])
 				/*** BOOLEAN ATTRS ***/
 				// generic function to bind boolean attrs
 				function _observeBooleanAttr (attr, className) {
+					var value;
+
 					attrs.$observe(attr, function () {
 						className = className || 'fa-' + attr;
-						var value = attr in attrs && attrs[attr] !== 'false' && attrs[attr] !== false;
+						value = attr in attrs && attrs[attr] !== 'false' && attrs[attr] !== false;
 						element.toggleClass(className, value);
 					});
 				}
@@ -80,11 +86,11 @@ angular.module('picardy.fontawesome', [])
 
 				/*** CONDITIONAL ATTRS ***/
 					// automatically populate fa-li if DOM structure indicates
-				element.toggleClass('fa-li', (
+				element.toggleClass('fa-li',
 					element.parent() &&
 					element.parent().parent() &&
 					element.parent().parent().hasClass('fa-ul') &&
-					element.parent().children()[0] === element[0]) &&
+					element.parent().children()[0] === element[0] &&
 					attrs.list !== 'false' &&
 					attrs.list !== false
 				);
@@ -127,11 +133,13 @@ angular.module('picardy.fontawesome', [])
 
 				// generic function to bind string attrs
 				function _observeStringAttr (attr, baseClass) {
+					var className;
+
 					attrs.$observe(attr, function () {
 						baseClass = baseClass || 'fa-' + attr;
 						element.removeClass(currentClasses[attr]);
 						if (attrs[attr]) {
-							var className = [baseClass, attrs[attr]].join('-');
+							className = [baseClass, attrs[attr]].join('-');
 							element.addClass(className);
 							currentClasses[attr] = className;
 						}
@@ -145,6 +153,7 @@ angular.module('picardy.fontawesome', [])
 				 */
 				attrs.$observe('size', function () {
 					var className;
+
 					element.removeClass(currentClasses.size);
 
 					if (attrs.size === 'large') {
