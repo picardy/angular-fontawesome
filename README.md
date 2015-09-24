@@ -12,7 +12,7 @@ A simple directive for [FontAwesome](http://fontawesome.io/) icons. Avoid writin
     ```javascript
     angular.module('myApp', ['picardy.fontawesome'])
     ```
-    
+
 3. Use the directive on any page which bootstraps your app.
     ```html
     <fa name="spinner" spin ng-style="{'color': checkColor}"></fa>
@@ -111,7 +111,7 @@ You can pass in `true` or `false` to the attribute as well, allowing the spin cl
 ```html
 <fa name="envelope" border></fa>
 <!-- rendered -->
-<i class="fa fa-envelope fa-border"></i> 
+<i class="fa fa-envelope fa-border"></i>
 ```
 
 ##### fixed width
@@ -158,15 +158,14 @@ The `faStack` directive is used as a wrapper for stacked fonts used by FontAweso
     <fa name="ICON_NAME" stack="1-5|large"></fa>    
 </fa-stack>
 ```
-When using <fa-stack> as a wrapper, you must also specify the 'stack' attribute on the children, 
+When using <fa-stack> as a wrapper, you must also specify the 'stack' attribute on the children,
 as described [here](http://fortawesome.github.io/Font-Awesome/examples/#stacked).
 Failure to do so will render the fonts, just not one on top of another like we want them to.
 
 ### TODO
  * `fa-stack` tests
  * `pull="left"`, `pull="right"`
- * demos on Github pages
-
+ * full browser support list
 
 ### License
 MIT Licensed by [Picardy](http://beta.picardylearning.com).

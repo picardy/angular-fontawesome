@@ -23,6 +23,15 @@ module.exports = function (grunt) {
         dest: 'dist/angular-fontawesome.js'
       }
     },
+    connect: {
+      demo: {
+        options: {
+          port: 8005,
+          hostname: '*',
+					open: 'http://localhost:8005/demo'
+        }
+      }
+    },
     uglify: {
       dist: {
         files: {
@@ -56,6 +65,7 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-eslint');

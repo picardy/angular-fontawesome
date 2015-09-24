@@ -88,6 +88,7 @@ angular.module('picardy.fontawesome', [])
           // automatically populate fa-li if DOM structure indicates
         element.toggleClass('fa-li',
           element.parent() &&
+          element.parent().prop('tagName') === 'LI' &&
           element.parent().parent() &&
           element.parent().parent().hasClass('fa-ul') &&
           element.parent().children()[0] === element[0] &&
