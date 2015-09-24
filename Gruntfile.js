@@ -59,7 +59,7 @@ module.exports = function (grunt) {
       }
     },
     eslint: {
-      main: ['Gruntfile.js', 'test/**/*.js', 'src/**/*.js']
+      main: ['Gruntfile.js', 'test/**/*.js', 'src/**/*.js', 'demo/**/*.js']
     },
     'gh-pages': {
       demo: {
