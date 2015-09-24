@@ -46,17 +46,15 @@ The icon's [name](http://fontawesome.io/icons/), such as `fa-spinner` or `fa-squ
 ```
 
 ##### alt
-For accessibility support, you can now add an *alt* attribute, which will implement a [screen-reader friendly](https://github.com/FortAwesome/Font-Awesome/issues/6133#issuecomment-88944728) wrapper for the icon.
+For accessibility support, you can now add an *alt* attribute, which will add a [screen-reader friendly](https://github.com/FortAwesome/Font-Awesome/issues/6133#issuecomment-88944728) replacement text.
 ```html
 <fa name="github" alt="github website"></fa>
 <!-- rendered -->
-<span aria-hidden="true">
-      <i class="fa fa-github"></i>
-</span>
+<i class="fa fa-github" aria-hidden="true"></i>
 <span class="sr-only">github website</span>
 ```
 
-**notice:** the ['sr-only' class](http://getbootstrap.com/css/#helper-classes-screen-readers) is derived from [Bootstrap](http://getbootstrap.com/). If you're not using Bootstrap, you must add this style to you css:
+*notice:* the ['sr-only' class](http://getbootstrap.com/css/#helper-classes-screen-readers) will hide the text from anyone not using a screen reader. It is derived from [Bootstrap](http://getbootstrap.com/), so if you're not using Bootstrap, you must add this style to your css:
 ```css
 .sr-only {
     position: absolute;
