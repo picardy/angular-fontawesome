@@ -27,6 +27,7 @@ The `fa` directive's attributes map to the classes used by FontAwesome\.
 
 ```html
 <fa name="ICON-NAME"
+    alt="TEXT-ALTERNATIVE"
     size="1-5|large"
     flip="horizontal|vertical"
     rotate="90|180|270"
@@ -42,6 +43,31 @@ The icon's [name](http://fontawesome.io/icons/), such as `fa-spinner` or `fa-squ
 <fa name="github"></fa>
 <!-- rendered -->
 <i class="fa fa-github"></i>
+```
+
+##### alt
+For accessibility support, you can now add an *alt* attribute, which will implement a [screen-reader friendly](https://github.com/FortAwesome/Font-Awesome/issues/6133#issuecomment-88944728) wrapper for the icon.
+```html
+<fa name="github" alt="github website"></fa>
+<!-- rendered -->
+<span aria-hidden="true">
+      <i class="fa fa-github"></i>
+</span>
+<span class="sr-only">github website</span>
+```
+
+**notice:** the ['sr-only' class](http://getbootstrap.com/css/#helper-classes-screen-readers) is derived from [Bootstrap](http://getbootstrap.com/). If you're not using Bootstrap, you must add this style to you css:
+```css
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
 ```
 
 ##### size
