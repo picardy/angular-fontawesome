@@ -2,7 +2,7 @@ angular.module('picardy.fontawesome', [])
 	.directive('fa', function () {
 		return {
 			restrict: 'E',
-			template: '<i class="fa"></i>',
+			template: '<span class="fa" aria-hidden="true"></span>',
 			replace: true,
 			link: function (scope, element, attrs) {
 
@@ -90,15 +90,25 @@ angular.module('picardy.fontawesome', [])
 				);
 
 				attrs.$observe('alt', function () {
-					if (attrs.alt) {
-						var srText;
-						srText = attrs.alt;
-						element.removeAttr('alt')
-						element.attr('aria-hidden', 'true');
-						element.after('<span class="sr-only">' + srText + '</span>');
+					var altText = attrs.alt,
+							altElem = element.next(),
+							altElemClass = 'fa-alt-text';
+
+					if (altText) {
+						element.removeAttr('alt');
+
+						// create the alt elem if one does not exist
+						if (!altElem || !altElem.hasClass('')) {
+							element.after('<span class="sr-only fa-alt-text"></span>');
+							altElem = element.next();
+						}
+
+						altElem.text(altText);
+					} else if (altElem && altElem.hasClass(altElemClass)) {
+						// kill the alt elem if we used to have alt text, but now we don't
+						altElem.remove();
 					}
 				});
-
 			}
 		};
 	})

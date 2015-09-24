@@ -1,5 +1,5 @@
 (function () {
-  
+
   'use strict';
 
   describe('angular-fontawesome', function () {
@@ -39,8 +39,10 @@
           $rootScope.$digest();
         }));
 
-        it('should replace the <fa> tag with an <i> tag that contains the proper classes', function () {
+        it('should replace the <fa> tag with an <span> tag that contains the proper classes', function () {
+          expect(elm.prop('tagName')).toBe('SPAN');
           expect(elm.hasClass('fa-square')).toBe(true);
+          expect(elm.attr('aria-hidden')).toBe('true');
         });
 
         it('should be able to change the used icon during the $digest cycle', function () {
@@ -88,7 +90,7 @@
         it('should clear existing classes', function () {
           scope.options.size = 'large';
           scope.$digest();
-          
+
           expect(elm.hasClass('fa-lg')).toBe(true);
 
           scope.options.size = 1;
@@ -196,6 +198,89 @@
           scope.$digest();
           expect(elm.hasClass('fa-rotate-180')).toBe(true);
           expect(elm.hasClass('fa-rotate-90')).not.toBe(true);
+        });
+      });
+
+      describe('alt', function() {
+        it('should add an element after the icon if alt text exists', function(done) {
+          var elm, scope;
+
+          inject(function($rootScope, $compile) {
+            elm = angular.element('<fa name="github" alt="{{ options.alt }}"></fa>');
+            scope = $rootScope;
+
+            scope.options = {alt: 'my text'};
+
+            $compile(elm)(scope);
+            scope.$digest();
+
+            expect(elm.next().hasClass('sr-only')).toBe(true);
+            expect(elm.next().hasClass('fa-alt-text')).toBe(true);
+            expect(elm.next().text()).toBe('my text');
+
+            done();
+          });
+        });
+
+        it('should bind to an expression', function(done) {
+          var elm, scope;
+
+          inject(function($rootScope, $compile) {
+            elm = angular.element('<fa name="github" alt="{{ options.alt }}"></fa>');
+            scope = $rootScope;
+
+            scope.options = {alt: 'old text'};
+
+            $compile(elm)(scope);
+            scope.$digest();
+            expect(elm.next().text()).toBe('old text');
+
+            scope.options.alt = 'my text';
+            scope.$digest();
+            expect(elm.next().text()).toBe('my text');
+
+            scope.options.alt = 'my newer text';
+            scope.$digest();
+            expect(elm.next().text()).toBe('my newer text');
+
+            done();
+          });
+        });
+
+        it('should only insert the element if alt text is present', function(done) {
+          var elm, scope;
+
+          inject(function($rootScope, $compile) {
+            elm = angular.element('<fa name="github" alt=""></fa>');
+            scope = $rootScope;
+
+            $compile(elm)(scope);
+            scope.$digest();
+            expect(elm.next()).toEqual({});
+
+            done();
+          });
+        });
+
+        it('should remove the alt element if alt text has been removed', function(done) {
+          var elm, scope;
+
+          inject(function($rootScope, $compile) {
+            elm = angular.element('<fa name="github" alt="{{ options.alt }}"></fa>');
+            scope = $rootScope;
+
+            $rootScope.options = {alt: 'old text'};
+
+            $compile(elm)(scope);
+            scope.$digest();
+            expect(elm.next().text()).toBe('old text');
+
+            delete scope.options.alt;
+            scope.$digest();
+            expect(elm.next()).toEqual({});
+
+            done();
+          });
         });
       });
     });
